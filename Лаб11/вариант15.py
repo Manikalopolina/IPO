@@ -25,14 +25,13 @@ class ChemicalElement:
         return self.atomic_mass
 
 # Создание и инициализация экземпляров класса
-element1 = ChemicalElement("Кислород", "O", 8, 15.999, -183, -218)
-element2 = ChemicalElement("Углерод", "C", 6, 12.011, 3550, 3550)
-element3 = ChemicalElement("Железо", "Fe", 26, 55.845, 2750, 1538)
-element4 = ChemicalElement("Азот", "N", 7, 14.007, -196, -210)
-element5 = ChemicalElement("Натрий", "Na", 11, 22.990, 883, 97)
+element1 = ChemicalElement("Кислород", "O", 8, 16, -183, -218)
+element2 = ChemicalElement("Углерод", "C", 6, 12, 3550, 3550)
+element3 = ChemicalElement("Железо", "Fe", 26, 56, 2750, 1538)
+element4 = ChemicalElement("Азот", "N", 7, 14, -196, -210)
+element5 = ChemicalElement("Натрий", "Na", 11, 23, 883, 97)
 print(element1.chemicalelement_info())
 print(element2.chemicalelement_info())
 print(element3.chemicalelement_info())
 print(element4.chemicalelement_info())
 print(element5.chemicalelement_info())
-
