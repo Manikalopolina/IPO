@@ -1,64 +1,61 @@
+class ChemicalElement:
+    '''Класс, описывающий сведения о химическом элементе.'''
 
-class Rub(object):
-    '''Класс для работы с рублями и копейками.'''
-    def __init__(self, rub=0, kop=0): # Определение метода инициализации объекта класса Rub
-        self.rub=rub # Инициализация атрибута rub объекта класса Rub
-        self.kop=kop # Инициализация атрибута kop объекта класса Rub
-        self.normalize() # Вызов метода normalize для нормализации значений rub и kop
+    def __init__(self, name, symbol, atomic_number, atomic_mass, boiling_point, melting_point):
+        self.name = name
+        self.symbol = symbol
+        self.atomic_number = atomic_number
+        self.atomic_mass = atomic_mass
+        self.boiling_point = boiling_point
+        self.melting_point = melting_point
 
-    def normalize(self): # Определение метода normalize, который нормализует значения rub и kop
-        self.rub+=self.kop//100 # Добавление целой части от деления kop на 100 к rub
-        self.kop=self.kop % # Оставление остатка от деления kop на 100 в kop
+    def set_name(self, name):
+        self.name = name
 
-    def __str__(self): # Определение метода преобразования объекта в строку
-        return f"{self.rub}.{self.kop:02d} rub"  # Возвращение строки в формате "rub.kop rub"
+    def set_symbol(self, symbol):
+        self.symbol = symbol
 
-    def __lt__(self, other): # Определение метода сравнения меньше для объектов класса Rub
-        if self.rub<other.rub: # Если rub объекта self меньше rub объекта other
-            return True # Возвращение True
-        elif self.rub==other.rub and self.kop<other.kop:  # Если rub объекта self равен rub объекта other и kop объекта
-            # self меньше kop объекта other
-            return True # Возвращение True
-        return False # Возвращение False
+    def set_atomic_number(self, atomic_number):
+        self.atomic_number = atomic_number
 
-    def __add__(self, other): # Определение метода сложения для объектов класса Rub
-        res=Rub(self.rub + other.rub, self.kop + other.kop) # Создание нового объекта Rub с суммой rub и kop объектов self и other
-        res.normalize() # Вызов метода normalize для нормализации значений rub и kop нового объекта res
-        return res # Возвращение нового объекта Rub
+    def set_atomic_mass(self, atomic_mass):
+        self.atomic_mass = atomic_mass
 
+    def set_boiling_point(self, boiling_point):
+        self.boiling_point = boiling_point
 
-class Goods(object):
-    ''' Класс описания товара: название и цена '''
-    def __init__(self, name='', price=0):  # Определение метода инициализации объекта класса Goods
-        self.name=name # Инициализация атрибута name объекта класса Goods
-        self.price=price # Инициализация атрибута price объекта класса Goods
+    def set_melting_point(self, melting_point):
+        self.melting_point = melting_point
 
-# Входные данные
-input_data = [
-    "rice 10.50",
-    "tea 6.30",
-    "cake 10.12",
-    "salad 20.00"]
+    def chemical_element_info(self):
+        info = f'Название: {self.name}\nСимвол элемента: {self.symbol}\nАтомный номер: {self.atomic_number}\nАтомная масса: {self.atomic_mass}\nТемпература кипения: {self.boiling_point}\nТемпература плавления: {self.melting_point}\n'
+        return info
 
-# Обработка входных данных
-goods=[] # Создание пустого списка для хранения объектов класса Goods
-total_price=Rub() # Создание объекта Rub для хранения общей суммы цен товаров
+    def get_name(self):
+        '''Метод для получения названия элемента.'''
+        return self.name
 
-for line in input_data: # Перебор строк во входных данных
-    name, price_str = line.split() # Разделение строки на название и цену товара
-    rub, kop = map(int, price_str.split('.')) # Разделение строки на название и цену товара
-    price = Rub(rub, kop) # Создание объекта Rub с заданными значениями rub и kop
-    goods.append(Goods(name, price))# Добавление объекта Goods с заданным названием и ценой в список товаров
-    total_price += price # Добавление цены товара к общей сумме
+    def get_symbol(self):
+        '''Метод для получения символа элемента.'''
+        return self.symbol
+
+    def get_atomic_number(self):
+        '''Метод для получения атомного номера элемента.'''
+        return self.atomic_number
 
 
-goods.sort(key=lambda x: x.price, reverse=True)# Сортировка списка товаров по убыванию цены
+# Создание и инициализация экземпляров класса
+elements = []
+for i in range(5):
+    name = input("Введите название элемента: ")
+    symbol = input("Введите символ элемента: ")
+    atomic_number = int(input("Введите атомный номер элемента: "))
+    atomic_mass = float(input("Введите атомную массу элемента: "))
+    boiling_point = int(input("Введите температуру кипения: "))
+    melting_point = int(input("Введите температуру плавления: "))
+    element = ChemicalElement(name, symbol, atomic_number, atomic_mass, boiling_point, melting_point)
+    elements.append(element)
 
-
-for good in goods:# Сортировка списка товаров по убыванию цены
-    print(good.name, good.price)# Вывод названия и цены товара
-
-print('-----')
-print(f"total {total_price} rub")# Вывод общей суммы цен товаров
-
-
+# Вывод информации об элементах
+for element in elements:
+    print(element.chemical_element_info())
