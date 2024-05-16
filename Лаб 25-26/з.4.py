@@ -1,6 +1,6 @@
 import numpy as np # Импорт библиотеки NumPy
 
-A=np.arange(13) # Создание одномерного массива A
+A=np.arange(12) # Создание одномерного массива A
 print("Одномерный массив A:")
 print(A)
 
