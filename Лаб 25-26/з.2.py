@@ -1,15 +1,15 @@
-import numpy as np # Импорт библиотеки NumPy
+import numpy as np
 
-A=np.arange(12, 24) # Создание одномерного массива A
+A = np.arange(12, 24)
 print("Одномерный массив A:")
 print(A)
 
-matrix_3x4=A.reshape(3, 4) # Преобразование одномерного массива A в двумерную матрицу размером 3x4
-matrix_4x3=A.reshape(4, 3) # Преобразование одномерного массива A в двумерную матрицу размером 4x3
-matrix_2x6=A.reshape(2, 6) # Преобразование одномерного массива A в двумерную матрицу размером 2x6
+matrix_3x4 = A.reshape(3, 4)
+matrix_4x3 = A.reshape(4, 3)
+matrix_2x6 = A.reshape(2, 6)
 
-# Вывод
-print("Двумерные массивы разной формы:")
+
+
 print("Матрица 3x4:")
 print(matrix_3x4)
 print("Матрица 4x3:")
